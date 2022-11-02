@@ -1,0 +1,7 @@
+{
+  "name": "achievements-of-polina",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
