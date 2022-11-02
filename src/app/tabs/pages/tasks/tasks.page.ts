@@ -10,6 +10,7 @@ import { CurrentTask } from '../../shared/interfaces/current-task.interface';
   styleUrls: ['tasks.page.scss']
 })
 export class TasksPage implements OnInit {
+  public loading = true;
 
   public createdTasks: CurrentTask[] = [];
   public approvedTasks: CurrentTask[] = [];
@@ -24,6 +25,7 @@ export class TasksPage implements OnInit {
     ).subscribe(tasks => {
       this.clearTasks();
       this.filterTasks(tasks);
+      this.loading = false;
     });
   }
 

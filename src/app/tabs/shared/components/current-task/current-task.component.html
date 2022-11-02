@@ -15,6 +15,8 @@
     <ion-badge *ngIf="task.new" color="primary"> new </ion-badge>
   </ion-item>
   <ion-item-options>
-    <ion-item-option> Выполнить </ion-item-option>
+    <ion-item-option *ngIf="task.status === 'created' || task.status === 'error'">
+      Выполнить {{ task.status === 'error' ? 'заново' : '' }}
+    </ion-item-option>
   </ion-item-options>
 </ion-item-sliding>

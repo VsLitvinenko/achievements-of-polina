@@ -7,12 +7,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-accordion-group [multiple]="true"
+  <ion-accordion-group *ngIf="!loading; else loadingTemplate"
+                       [multiple]="true"
                        [value]="['created', 'approved', 'successes', 'errors']">
 
     <ion-accordion value="created" mode="ios">
       <ion-item slot="header" color="primary">
-        <ion-label> Не выполненные </ion-label>
+        <ion-label> Не выполненные ({{createdTasks.length}}) </ion-label>
       </ion-item>
       <ion-list slot="content">
         <app-current-task *ngFor="let task of createdTasks"
@@ -22,7 +23,7 @@
 
     <ion-accordion value="approved" mode="ios">
       <ion-item slot="header" color="warning">
-        <ion-label> Ожидают подтверждения </ion-label>
+        <ion-label> Ожидают подтверждения ({{approvedTasks.length}}) </ion-label>
       </ion-item>
       <ion-list slot="content">
         <app-current-task *ngFor="let task of approvedTasks"
@@ -32,7 +33,7 @@
 
     <ion-accordion value="successes" mode="ios">
       <ion-item slot="header" color="success">
-        <ion-label> Выполненные </ion-label>
+        <ion-label> Выполненные ({{successTasks.length}}) </ion-label>
       </ion-item>
       <ion-list slot="content">
         <app-current-task *ngFor="let task of successTasks"
@@ -42,7 +43,7 @@
 
     <ion-accordion value="errors" mode="ios">
       <ion-item slot="header" color="light">
-        <ion-label> Не прошли проверку </ion-label>
+        <ion-label> Не прошли проверку ({{errorTasks.length}}) </ion-label>
       </ion-item>
       <ion-list slot="content">
         <app-current-task *ngFor="let task of errorTasks"
@@ -52,3 +53,7 @@
 
   </ion-accordion-group>
 </ion-content>
+
+<ng-template #loadingTemplate>
+  <app-loading></app-loading>
+</ng-template>
