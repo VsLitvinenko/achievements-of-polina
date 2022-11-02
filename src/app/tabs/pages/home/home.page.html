@@ -12,20 +12,7 @@
         Выполняйте задания! <br>
         <ion-note> Смахните задание вправо, чтобы его выполнить </ion-note>
       </p>
-      <ion-item-sliding>
-        <ion-item>
-          <ion-thumbnail slot="start">
-            <img alt="..." src="../../../../assets/imgs/cool_girl.png" />
-          </ion-thumbnail>
-          <ion-label class="ion-text-wrap">
-            Быть целый год самой красивой и веселой ;) <br>
-            <ion-note> 01.01.2022 - 31.12.2022 </ion-note>
-          </ion-label>
-        </ion-item>
-        <ion-item-options>
-          <ion-item-option> Выполнить </ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
+      <app-current-task [task]="testTask"></app-current-task>
     </div>
 
     <div class="achievement-block">
