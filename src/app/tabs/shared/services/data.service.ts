@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { CurrentTask } from '../shared/components/current-task/current-task.component';
+import { CurrentTask } from '../interfaces/current-task.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class DataService {
 
   constructor(private readonly firestore: Firestore) { }
 
-  public getTasks(): Observable<CurrentTask[]> {
+  public get tasks$(): Observable<CurrentTask[]> {
     const tasks = collection(this.firestore, 'tasks');
     return collectionData(tasks, { idField: 'id' }).pipe(
       map(

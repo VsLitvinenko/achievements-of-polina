@@ -7,5 +7,48 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-accordion-group [multiple]="true"
+                       [value]="['created', 'approved', 'successes', 'errors']">
 
+    <ion-accordion value="created" mode="ios">
+      <ion-item slot="header" color="primary">
+        <ion-label> Не выполненные </ion-label>
+      </ion-item>
+      <ion-list slot="content">
+        <app-current-task *ngFor="let task of createdTasks"
+                          [task]="task"></app-current-task>
+      </ion-list>
+    </ion-accordion>
+
+    <ion-accordion value="approved" mode="ios">
+      <ion-item slot="header" color="warning">
+        <ion-label> Ожидают подтверждения </ion-label>
+      </ion-item>
+      <ion-list slot="content">
+        <app-current-task *ngFor="let task of approvedTasks"
+                          [task]="task"></app-current-task>
+      </ion-list>
+    </ion-accordion>
+
+    <ion-accordion value="successes" mode="ios">
+      <ion-item slot="header" color="success">
+        <ion-label> Выполненные </ion-label>
+      </ion-item>
+      <ion-list slot="content">
+        <app-current-task *ngFor="let task of successTasks"
+                          [task]="task"></app-current-task>
+      </ion-list>
+    </ion-accordion>
+
+    <ion-accordion value="errors" mode="ios">
+      <ion-item slot="header" color="light">
+        <ion-label> Не прошли проверку </ion-label>
+      </ion-item>
+      <ion-list slot="content">
+        <app-current-task *ngFor="let task of errorTasks"
+                          [task]="task"></app-current-task>
+      </ion-list>
+    </ion-accordion>
+
+  </ion-accordion-group>
 </ion-content>

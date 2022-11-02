@@ -1,14 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-export interface CurrentTask {
-  id: string;
-  title: string;
-  imgSrc: string;
-  status: 'created' | 'approve' | 'success'  | 'error';
-  new: boolean;
-  startDate: Date;
-  endDate: Date;
-}
+import { CurrentTask } from '../../interfaces/current-task.interface';
 
 @Component({
   selector: 'app-current-task',

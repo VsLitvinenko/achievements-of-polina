@@ -6,7 +6,7 @@
 
     <ion-tab-button tab="tasks">
       <ion-icon name="checkbox-outline"></ion-icon>
-      <ion-badge> 6 </ion-badge>
+      <ion-badge> {{ tasksBadge$ | async }} </ion-badge>
     </ion-tab-button>
 
     <ion-tab-button tab="achievements">

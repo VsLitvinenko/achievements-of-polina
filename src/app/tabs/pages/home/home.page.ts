@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CurrentTask } from '../../shared/components/current-task/current-task.component';
+import { CurrentTask } from '../../shared/interfaces/current-task.interface';
 
 @Component({
   selector: 'app-home',
