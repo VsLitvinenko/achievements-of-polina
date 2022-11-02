@@ -1,3 +1,6 @@
 ion-item {
   padding: 5px 0;
+  ion-thumbnail {
+    --border-radius: 15px;
+  }
 }

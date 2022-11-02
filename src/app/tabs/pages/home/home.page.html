@@ -17,19 +17,7 @@
 
     <div class="achievement-block">
       <p> Следите за своими достижениями! </p>
-      <ion-card>
-        <img alt="..." src="../../../../assets/imgs/hacker.jpg" />
-        <ion-card-header>
-          <ion-card-title> Программист </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Назвать 10 переменных не "a, a1, b2, c3", а нормальными именами
-        </ion-card-content>
-        <div class="progress">
-          <span> 40% </span>
-          <div class="bar" [style.width]="'40%'"></div>
-        </div>
-      </ion-card>
+      <app-current-achievement [achievement]="testAchievement"></app-current-achievement>
     </div>
 
   </main>

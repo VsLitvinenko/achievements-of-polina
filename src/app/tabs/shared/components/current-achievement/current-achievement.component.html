@@ -1,0 +1,11 @@
+<ion-card>
+  <img alt="..." [src]="achievement.imgSrc" />
+  <ion-card-header>
+    <ion-card-title> {{ achievement.title }} </ion-card-title>
+  </ion-card-header>
+  <ion-card-content> {{ achievement.description }} </ion-card-content>
+  <div class="progress">
+    <span> {{ achievement.progress }}% </span>
+    <div class="bar" [style.width]="achievement.progress + '%'"></div>
+  </div>
+</ion-card>
