@@ -6,11 +6,16 @@
 
     <ion-tab-button tab="tasks">
       <ion-icon name="checkbox-outline"></ion-icon>
-      <ion-badge> {{ tasksBadge$ | async }} </ion-badge>
+      <ion-badge *ngIf="(tasksBadge$ | async) as tasksBadge">
+        {{ tasksBadge }}
+      </ion-badge>
     </ion-tab-button>
 
     <ion-tab-button tab="achievements">
       <ion-icon name="medal-outline"></ion-icon>
+      <ion-badge *ngIf="(achievementsBadge$ | async) as achievementsBadge">
+        {{ achievementsBadge }}
+      </ion-badge>
     </ion-tab-button>
   </ion-tab-bar>
 

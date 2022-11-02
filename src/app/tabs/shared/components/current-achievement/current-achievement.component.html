@@ -1,10 +1,23 @@
-<ion-card>
+<ion-card mode="md"
+          (click)="markTaskAsOld()">
   <img alt="..." [src]="achievement.imgSrc" />
+  <ion-badge *ngIf="achievement.new" color="primary"> new </ion-badge>
+
   <ion-card-header>
     <ion-card-title> {{ achievement.title }} </ion-card-title>
   </ion-card-header>
-  <ion-card-content> {{ achievement.description }} </ion-card-content>
-  <div class="progress">
+
+  <ion-card-content>
+    {{ achievement.description }}
+    <ion-button *ngIf="achievement.progress === 100 && !achievement.isCollected"
+                fill="outline" expand="block" color="success"
+                (click)="collectAchieve()">
+      <ion-icon name="trophy-outline"></ion-icon>
+    </ion-button>
+  </ion-card-content>
+
+  <div *ngIf="!achievement.isCollected"
+       class="progress">
     <span> {{ achievement.progress }}% </span>
     <div class="bar" [style.width]="achievement.progress + '%'"></div>
   </div>

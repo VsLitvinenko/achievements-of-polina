@@ -25,7 +25,7 @@ export class HomePage {
     description: 'Назвать 10 переменных не "a, a1, b2, c3", а нормальными именами',
     imgSrc: '../../../../assets/imgs/hacker.jpg',
     progress: 40,
-    new: true,
+    new: false,
     isCollected: false
   };
 

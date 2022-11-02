@@ -13,6 +13,10 @@ export class TabsPage {
     map(tasks => tasks.filter(task => task.new).length)
   );
 
+  public readonly achievementsBadge$ = this.data.achievements$.pipe(
+    map(tasks => tasks.filter(ach => ach.new).length)
+  );
+
   constructor(private readonly data: DataService) {}
 
 }

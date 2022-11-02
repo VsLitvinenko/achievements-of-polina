@@ -7,6 +7,30 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-accordion-group *ngIf="!loading; else loadingTemplate"
+                       [multiple]="true"
+                       [value]="accordionGroupValues">
 
+    <ion-accordion *ngFor="let item of accordions"
+                   [value]="item.value" mode="ios">
 
+      <ion-item slot="header" [color]="item.color">
+        <ion-label> {{item.label}} ({{item.array.length}}) </ion-label>
+      </ion-item>
+
+      <div slot="content" class="achievements-container"
+           [ngStyle]="item.style">
+        <app-current-achievement *ngFor="let achievement of item.array"
+                                 (updateAchievement)="updateAchievement$$.next($event)"
+                                 [achievement]="achievement">
+        </app-current-achievement>
+      </div>
+
+    </ion-accordion>
+
+  </ion-accordion-group>
 </ion-content>
+
+<ng-template #loadingTemplate>
+  <app-loading></app-loading>
+</ng-template>
