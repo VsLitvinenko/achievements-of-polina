@@ -1,5 +1,5 @@
 <ion-item-sliding>
-  <ion-item>
+  <ion-item (click)="markTaskAsOld()">
     <ion-thumbnail slot="start">
       <img alt="..." [src]="task.imgSrc" />
     </ion-thumbnail>
@@ -15,7 +15,8 @@
     <ion-badge *ngIf="task.new" color="primary"> new </ion-badge>
   </ion-item>
   <ion-item-options>
-    <ion-item-option *ngIf="task.status === 'created' || task.status === 'error'">
+    <ion-item-option *ngIf="task.status === 'created' || task.status === 'error'"
+                     (click)="completeTask()">
       Выполнить {{ task.status === 'error' ? 'заново' : '' }}
     </ion-item-option>
   </ion-item-options>

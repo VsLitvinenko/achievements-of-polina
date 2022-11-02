@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { collection, collectionData, doc, Firestore, updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { map, share } from 'rxjs/operators';
 import { CurrentTask } from '../interfaces/current-task.interface';
 
 @Injectable({
@@ -9,23 +9,26 @@ import { CurrentTask } from '../interfaces/current-task.interface';
 })
 export class DataService {
 
+  public readonly tasks$: Observable<CurrentTask[]> = collectionData(
+    collection(this.firestore, 'tasks'),
+    { idField: 'id' }
+  ).pipe(
+      map(res => res.map(task => ({
+        id: task.id,
+        title: task.title,
+        imgSrc: task.imgSrc,
+        status: task.status,
+        new: task.new,
+        startDate: new Date(task.startDate.seconds * 1000),
+        endDate: task.endDate ? new Date(task.endDate.seconds * 1000) : null
+      }))),
+      share()
+    );
+
   constructor(private readonly firestore: Firestore) { }
 
-  public get tasks$(): Observable<CurrentTask[]> {
-    const tasks = collection(this.firestore, 'tasks');
-    return collectionData(tasks, { idField: 'id' }).pipe(
-      map(
-        res => res.map(task => ({
-          id: task.id,
-          title: task.title,
-          imgSrc: task.imgSrc,
-          status: task.status,
-          new: task.new,
-          startDate: new Date(task.startDate),
-          endDate: task.endDate ? new Date(task.endDate) : null
-        }))
-      ),
-      shareReplay(1)
-    );
+  public async updateTask(newTask: CurrentTask): Promise<any> {
+    const currentTask = doc(this.firestore, `tasks/${newTask.id}`);
+    return updateDoc(currentTask, { ...newTask });
   }
 }

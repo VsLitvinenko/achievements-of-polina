@@ -9,46 +9,21 @@
 <ion-content [fullscreen]="true">
   <ion-accordion-group *ngIf="!loading; else loadingTemplate"
                        [multiple]="true"
-                       [value]="['created', 'approved', 'successes', 'errors']">
+                       [value]="accordionGroupValues">
 
-    <ion-accordion value="created" mode="ios">
-      <ion-item slot="header" color="primary">
-        <ion-label> Не выполненные ({{createdTasks.length}}) </ion-label>
-      </ion-item>
-      <ion-list slot="content">
-        <app-current-task *ngFor="let task of createdTasks"
-                          [task]="task"></app-current-task>
-      </ion-list>
-    </ion-accordion>
+    <ion-accordion *ngFor="let item of accordions"
+                   [value]="item.value" mode="ios">
 
-    <ion-accordion value="approved" mode="ios">
-      <ion-item slot="header" color="warning">
-        <ion-label> Ожидают подтверждения ({{approvedTasks.length}}) </ion-label>
+      <ion-item slot="header" [color]="item.color">
+        <ion-label> {{item.label}} ({{item.array.length}}) </ion-label>
       </ion-item>
-      <ion-list slot="content">
-        <app-current-task *ngFor="let task of approvedTasks"
-                          [task]="task"></app-current-task>
-      </ion-list>
-    </ion-accordion>
 
-    <ion-accordion value="successes" mode="ios">
-      <ion-item slot="header" color="success">
-        <ion-label> Выполненные ({{successTasks.length}}) </ion-label>
-      </ion-item>
       <ion-list slot="content">
-        <app-current-task *ngFor="let task of successTasks"
-                          [task]="task"></app-current-task>
+        <app-current-task *ngFor="let task of item.array"
+                          (updateTask)="updateTask$$.next($event)"
+                          [task]="task" ></app-current-task>
       </ion-list>
-    </ion-accordion>
 
-    <ion-accordion value="errors" mode="ios">
-      <ion-item slot="header" color="light">
-        <ion-label> Не прошли проверку ({{errorTasks.length}}) </ion-label>
-      </ion-item>
-      <ion-list slot="content">
-        <app-current-task *ngFor="let task of errorTasks"
-                          [task]="task"></app-current-task>
-      </ion-list>
     </ion-accordion>
 
   </ion-accordion-group>
