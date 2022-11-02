@@ -1,16 +1,49 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <main>
 
+    <h1>
+      <b> Полина,</b> <br>
+      добро пожаловать!
+    </h1>
+    <h3> Это приложение будет помогать Вам c мотивацией </h3>
+
+    <div class="task-block">
+      <p>
+        Выполняйте задания! <br>
+        <ion-note> Смахните задание вправо, чтобы его выполнить </ion-note>
+      </p>
+      <ion-item-sliding>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img alt="..." src="../../../../assets/imgs/cool_girl.png" />
+          </ion-thumbnail>
+          <ion-label class="ion-text-wrap">
+            Быть целый год самой красивой и веселой ;) <br>
+            <ion-note> 01.01.2022 - 31.12.2022 </ion-note>
+          </ion-label>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option> Выполнить </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </div>
+
+    <div class="achievement-block">
+      <p> Следите за своими достижениями! </p>
+      <ion-card>
+        <img alt="..." src="../../../../assets/imgs/hacker.jpg" />
+        <ion-card-header>
+          <ion-card-title> Программист </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Назвать 10 переменных не "a, a1, b2, c3", а нормальными именами
+        </ion-card-content>
+        <div class="progress">
+          <span> 40% </span>
+          <div class="bar" [style.width]="'40%'"></div>
+        </div>
+      </ion-card>
+    </div>
+
+  </main>
 </ion-content>
