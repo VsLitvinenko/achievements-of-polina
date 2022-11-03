@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-accordion-group *ngIf="!loading; else loadingTemplate"
+  <ion-accordion-group *ngIf="(accordions$ | async) as accordions; else loadingTemplate"
                        [multiple]="true"
                        [value]="accordionGroupValues">
 
@@ -20,7 +20,7 @@
 
       <ion-list slot="content">
         <app-current-task *ngFor="let task of item.array"
-                          (updateTask)="updateTask$$.next($event)"
+                          (updateTask)="updateTask($event)"
                           [task]="task" ></app-current-task>
       </ion-list>
 

@@ -14,7 +14,9 @@ export class TabsPage {
   );
 
   public readonly achievementsBadge$ = this.data.achievements$.pipe(
-    map(tasks => tasks.filter(ach => ach.new).length)
+    map(tasks => tasks.filter(
+      ach => ach.new || (ach.progress === 100 && !ach.isCollected)
+    ).length)
   );
 
   constructor(private readonly data: DataService) {}
