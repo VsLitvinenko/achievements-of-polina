@@ -1,6 +1,13 @@
 <ion-card mode="md"
           (click)="markTaskAsOld()">
-  <img alt="..." [src]="achievement.imgSrc" />
+
+  <ion-img [src]="achievement.imgSrc"
+           (ionImgDidLoad)="hideSkeleton()"></ion-img>
+  <div *ngIf="skeletonInsteadImg"
+       class="skeleton-wrap">
+    <ion-skeleton-text animated="true"></ion-skeleton-text>
+  </div>
+
   <ion-badge *ngIf="achievement.new" color="primary"> new </ion-badge>
 
   <ion-card-header>
@@ -21,4 +28,5 @@
     <span> {{ achievement.progress }}% </span>
     <div class="bar" [style.width]="achievement.progress + '%'"></div>
   </div>
+
 </ion-card>

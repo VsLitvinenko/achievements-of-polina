@@ -14,6 +14,8 @@ export class CurrentAchievementComponent implements OnInit {
   @Input() public achievement: CurrentAchievement;
   @Output() public updateAchievement = new EventEmitter<CurrentAchievement>();
 
+  public skeletonInsteadImg = true;
+
   private readonly updateAchievement$$ = new Subject<CurrentAchievement>();
 
   constructor() { }
@@ -24,6 +26,10 @@ export class CurrentAchievementComponent implements OnInit {
       throttleTime(500),
       untilDestroyed(this)
     ).subscribe(updTask => this.updateAchievement.emit(updTask));
+  }
+
+  public hideSkeleton(): void {
+    this.skeletonInsteadImg = false;
   }
 
   public markTaskAsOld(): void {
