@@ -14,9 +14,8 @@
     </ion-label>
     <ion-badge *ngIf="task.new" color="primary"> new </ion-badge>
   </ion-item>
-  <ion-item-options>
-    <ion-item-option *ngIf="task.status === 'created' || task.status === 'error'"
-                     (click)="completeTask()">
+  <ion-item-options *ngIf="task.status === 'created' || task.status === 'error'">
+    <ion-item-option (click)="completeTask()">
       Выполнить {{ task.status === 'error' ? 'заново' : '' }}
     </ion-item-option>
   </ion-item-options>
